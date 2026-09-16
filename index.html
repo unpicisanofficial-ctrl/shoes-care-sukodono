@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes Care Sukodono — Pickup & Delivery</title>
+    <!-- Google Fonts & FontAwesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --whatsapp: #25d366;
+            --whatsapp-hover: #20ba5a;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn-wa-header {
+            background: var(--whatsapp);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .btn-wa-header:hover {
+            background: var(--whatsapp-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 9rem 5% 5rem 5%;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: var(--bg-light);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 5%;
+            background: var(--bg-light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .price-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card.popular {
+            border: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+        }
+
+        .price-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .price-card ul li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-card ul li i {
+            color: #10b981;
+        }
+
+        .btn-order {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-order:hover {
+            background: var(--accent);
+        }
+
+        /* Paket Hemat Section */
+        .packages-container {
+            background: white;
+            border: 2px dashed var(--accent);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pkg-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .pkg-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .pkg-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        footer p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 7rem;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-shoe-prints" style="color: var(--accent);"></i>
+            Shoes Care <span>Sukodono</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#cara-kerja">Cara Kerja</a></li>
+            <li><a href="#paket">Paket Hemat</a></li>
+        </ul>
+        <a href="https://wa.me/6281216299169?text=Halo%20Shoes%20Care%20Sukodono,%20saya%20mau%20order%20pickup%20sepatu." target="_blank" class="btn-wa-header">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Kami
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-motorcycle"></i> Layanan Pickup & Delivery</span>
+            <h1>Cuci Sepatu Bersih Tanpa Harus Keluar Rumah di <span>Sukodono</span></h1>
+            <p>Malas keluar rumah atau sibuk kuliah/kerja? Biar tim kami yang ambil sepatunya, cuci hingga bersih, foto before-after, dan antar kembali ke depan pintu rumahmu.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/6281216299169?text=Halo%20Shoes%20Care%20Sukodono,%20saya%20mau%20booking%20pickup%20sepatu." target="_blank" class="btn-primary">
+                    <i class="fa-brands fa-whatsapp"></i> Order Pickup Sekarang
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Gambar Cover Sepatu Putih -->
+            <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=800&q=80" alt="Cuci Sepatu Putih Sukodono">
+        </div>
+    </section>
+
+    <!-- How It Works (Cara Kerja) -->
+    <section class="how-it-works" id="cara-kerja">
+        <h2 class="section-title">Bagaimana Cara Kerjanya?</h2>
+        <p class="section-desc">Proses sangat mudah dan praktis, kamu cukup duduk manis di rumah.</p>
+        
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <h3>1. Order via WhatsApp</h3>
+                <p>Kirim pesan ke WhatsApp kami, jadwalkan waktu dan alamat penjemputan.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon"><i class="fa-solid fa-motorcycle"></i></div>
+                <h3>2. Kami Pickup</h3>
+                <p>Tim kami datang ke lokasimu di Sukodono untuk mengambil sepatu yang ingin dicuci.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon"><i class="fa-solid fa-soap"></i></div>
+                <h3>3. Proses Pencucian & Foto</h3>
+                <p>Sepatu dicuci secara profesional. Kami kirimkan foto before/after hasilnya.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                <h3>4. Antar Kembali</h3>
+                <p>Sepatu bersih diantar kembali ke rumahmu. Pembayaran bisa saat barang sampai.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="layanan">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 class="section-title">Daftar Layanan & Harga</h2>
+            <p class="section-desc">Pilih perawatan terbaik yang sesuai dengan kebutuhan sepatumu.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Basic Clean -->
+            <div class="price-card">
+                <div>
+                    <h3>Basic Clean</h3>
+                    <div class="price">Rp25K</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Upper & Midsole cleaning</li>
+                        <li><i class="fa-solid fa-check"></i> Outsole light wash</li>
+                        <li><i class="fa-solid fa-check"></i> Free freshener</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/6281216299169?text=Halo,%20saya%20mau%20pesan%20layanan%20Basic%20Clean%20(Rp25K)." target="_blank" class="btn-order">Pilih Layanan</a>
+            </div>
+
+            <!-- Deep Clean (Popular) -->
+            <div class="price-card popular">
+                <div class="popular-badge">Paling Laris</div>
+                <div>
+                    <h3>Deep Clean</h3>
+                    <div class="price">Rp40K</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Detailed upper & outsole clean</li>
+                        <li><i class="fa-solid fa-check"></i> Insole & laces deep wash</li>
+                        <li><i class="fa-solid fa-check"></i> Unyellowing treatment ringan</li>
+                        <li><i class="fa-solid fa-check"></i> Free freshener & antibakteri</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/6281216299169?text=Halo,%20saya%20mau%20pesan%20layanan%20Deep%20Clean%20(Rp40K)." target="_blank" class="btn-order">Pilih Layanan</a>
+            </div>
+
+            <!-- Premium Clean -->
+            <div class="price-card">
+                <div>
+                    <h3>Premium Clean</h3>
+                    <div class="price">Rp60K</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Deep clean total (all parts)</li>
+                        <li><i class="fa-solid fa-check"></i> Special formula by material</li>
+                        <li><i class="fa-solid fa-check"></i> Detailing extra teliti</li>
+                        <li><i class="fa-solid fa-check"></i> Free fragrance & protector</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/6281216299169?text=Halo,%20saya%20mau%20pesan%20layanan%20Premium%20Clean%20(Rp60K)." target="_blank" class="btn-order">Pilih Layanan</a>
+            </div>
+
+            <!-- Whitening Sole -->
+            <div class="price-card">
+                <div>
+                    <h3>Whitening Sole</h3>
+                    <div class="price">Rp20K</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Khusus sol sepatu menguning</li>
+                        <li><i class="fa-solid fa-check"></i> Proses unyellowing</li>
+                        <li><i class="fa-solid fa-check"></i> Mengembalikan warna putih</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/6281216299169?text=Halo,%20saya%20mau%20pesan%20layanan%20Whitening%20Sole%20(Rp20K)." target="_blank" class="btn-order">Pilih Layanan</a>
+            </div>
+
+            <!-- Pickup & Delivery (Gratis) -->
+            <div class="price-card">
+                <div>
+                    <h3>Pickup & Delivery</h3>
+                    <div class="price" style="color: #10b981;">GRATIS</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Khusus wilayah Sukodono</li>
+                        <li><i class="fa-solid fa-check"></i> Penjemputan ke rumah/kos</li>
+                        <li><i class="fa-solid fa-check"></i> Pengantaran kembali setelah bersih</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/6281216299169?text=Halo,%20saya%20mau%20tanya%20tentang%20Pickup%20and%20Delivery%20Gratis%20di%20Sukodono." target="_blank" class="btn-order">Pilih Layanan</a>
+            </div>
+        </div>
+
+        <!-- Paket Hemat Section -->
+        <div class="packages-container" id="paket">
+            <span class="hero-badge">Hemat & Cocok untuk Keluarga / Mahasiswa</span>
+            <h3 class="section-title" style="font-size: 1.75rem; margin-top: 0.5rem;">Paket Cuci Borongan</h3>
+            <p class="section-desc">Punya banyak sepatu? Cuci bareng-bareng jadi jauh lebih hemat!</p>
+            
+            <div class="packages-grid">
+                <div class="pkg-card">
+                    <h4>Paket 3 Pasang</h4>
+                    <div class="pkg-price">Rp100K</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem;">Cocok untuk mahasiswa atau bawa beberapa sepatu sekaligus.</p>
+                    <a href="https://wa.me/6281216299169?text=Halo,%20saya%20mau%20ambil%20Paket%203%20Pasang%20(Rp100K)." target="_blank" class="btn-order">Pilih Paket Ini</a>
+                </div>
+                <div class="pkg-card">
+                    <h4>Paket 5 Pasang</h4>
+                    <div class="pkg-price">Rp150K</div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem;">Paling hemat! Sangat pas untuk cuci sepatu satu keluarga.</p>
+                    <a href="https://wa.me/6281216299169?text=Halo,%20saya%20mau%20ambil%20Paket%205%20Pasang%20(Rp150K)." target="_blank" class="btn-order">Pilih Paket Ini</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo" style="color: white; justify-content: center; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-shoe-prints" style="color: var(--accent);"></i>
+            Shoes Care <span>Sukodono</span>
+        </div>
+        <p>&copy; 2026 Shoes Care Sukodono. Layanan Cuci Sepatu Pickup & Delivery Terpercaya.</p>
+    </footer>
+
+</body>
+</html>
